@@ -1,0 +1,90 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dfdfdf;
+}
+
+.main{
+    cursor: pointer;
+    margin-bottom: 70px;
+}
+
+.login-form{
+    border-radius: 5%;
+    background-color: #fff;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+}
+.login-form h4{
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.login-form input{
+    width: 80%;
+    height: 36px;
+    display: block;
+    margin: 5px auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.login-form input:focus{
+    outline: none;
+}
+
+.sign-in-btn{
+    border: none;
+    width: 80%;
+    border-radius: 5px;
+    background-color: crimson;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-sign-up{
+    border: none;
+    width: 80%;
+    border-radius: 5px;
+    background-color: crimson;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-sign-in{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.sign-in-btn:hover{
+    background-color: rgba(220, 20, 60, 0.9);
+}
+
+
+.sign-up-btn{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}

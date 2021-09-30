@@ -1,0 +1,89 @@
+.btn{ background: #fff; border: none; font-size: 1.1rem; cursor: pointer; margin-top: 10px;}
+.btn.prev{margin-left: 10px; margin-right: 326px; color: lightgray;}
+.btn.next{ margin-right: 7px;}
+
+textarea{
+	resize: none;
+}
+
+.write-box {
+	border: none;
+	width: 90%;
+	height: 100px;
+	padding: 15px;
+	margin: auto;
+	display: block;
+	outline: none;
+}
+.upload-page {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: -1500px;
+    background: rgba(0, 0,0,0.5);
+    z-index: 1;
+    transition: all 0.3s;
+}
+.upload-page.on {
+    opacity: 1;
+    top: 0;
+}
+.white-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 450px;
+    height: 650px;
+    background-color: #fff;
+    border-radius: 1%;
+
+}
+
+.upload-image1 {
+	width: 100%;
+    height: 450px;
+    background-size: cover;
+}
+.upload-image2 {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+}
+.filters {
+    overflow-x: scroll;
+	overflow-y: hidden;
+    white-space: nowrap;
+}
+.filter-1 {
+    width: 100px;
+    height: 100px;
+    background-color: cornflowerblue;
+    margin: 10px 10px 10px auto;
+    padding: 8px;
+    display: inline-block;
+    color: white;
+    background-size: cover;
+}
+.filters::-webkit-scrollbar {
+    height: 7px;
+}
+.filters::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.filters::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+.filters::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.box1{
+    display: block;
+}
+
+.box2{
+    display: none;
+}

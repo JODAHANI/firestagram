@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+body{
+    animation: fade-in 1s;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+}
+
+.sign-out {
+    display: none;
+}
+.sign-out.on {
+    display: inline-block;
+    border: none;
+    background-color: #fff;
+    color: black;
+
+}
+.sign-out.on:hover{
+    color: #777;
+}
+.navbar {
+    max-width: 1000px;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px 0 10px 80px;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    margin-right: 5rem;
+    font-size: 1.2rem;
+}
+.navbar-nav {
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.nav-link:hover {
+    color: #777;
+}
+
+.form-control {
+    width: 20rem;
+    border: 1px solid #ddd;
+    text-align: center;
+
+}
+
+footer {
+    position: sticky;
+    max-width: 616px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    bottom: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.footer-button-plus {
+    padding: 10px 0;
+    font-size: 1.5rem;
+}
+.input-plus {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.inputfile {
+    display: none;
+}
+
+/* 컨테이너 */
+.container {
+    margin: auto;
+    max-width: 616px;
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+
+.post {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+.post:first-child{
+    margin-top: 10px;
+}
+.post:last-child {
+    margin-bottom: 0;
+}
+
+
+.post-header {
+    padding: 15px;
+    display: flex;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.post-box{
+    display: flex;
+}
+.profile {
+    background-image: url("https://placeimg.com/100/100/arch");
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin-left: 15px;
+    margin-top: 6px;
+    font-size: 0.900rem;
+    font-weight: 600;
+}
+
+.post-body {
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    max-width: 500px;
+    height: 460px;
+}
+.post-content {
+    padding: 0 15px;
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.options {
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+.options .likes {
+    margin-right: 10px;
+}
+.fa-heart-o {
+    margin-right: 5px;
+}
+
+.comment {
+    cursor: pointer;
+}
+.fa-comment-o {
+    margin-right: 5px;
+}
+.name {
+    padding-left: 5px;
+}
+strong {
+    margin-right: 7px;
+    font-weight: 700;
+}
+
+.date {
+    color: grey;
+    font-size: 11px;
+    margin: 10px 0;
+}
+
+
+@keyframes fade-in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@media screen and (max-width:600px) {
+    .form-control {
+        display: none;
+    }
+    .navbar{
+        padding: 10px 10px;
+    }
+}

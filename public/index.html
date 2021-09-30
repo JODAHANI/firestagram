@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/modal.css">
+
+<title>Document</title>
+</head>
+
+<body>
+<div class="upload-page">
+  <div class="white-bg">
+    <button class="btn prev">Prev</button>
+    <button class="btn next">Next</button>
+      <div class="box1">
+        <div class="upload-image1"></div>
+        <div class="filters">
+          <div class="filter-1"></div>
+          <div class="filter-1"></div>
+          <div class="filter-1"></div>
+          <div class="filter-1"></div>
+          <div class="filter-1"></div>
+        </div>
+      </div>
+    <div class="box2">
+      <div class="upload-image2"></div>
+      <div class="write">
+        <textarea class="write-box" placeholder="wirte!"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<header>
+  <nav class="navbar">
+    <a class="navbar-brand" href="/">Firestagram</a>
+    <div class="search">
+      <form class="d-flex">
+        <input class="form-control" placeholder="검색">
+      </form>
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/message.html">Message</a>
+      </li>
+      <li class="nav-item">
+        <button class="sign-out" onclick="signOut()">Signout</button>
+        <a class="sign nav-link" href="/signin.html">Sign In</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div class="container">
+  
+</div> 
+
+</div>
+<footer class="footer">
+  <ul class="footer-button-plus">
+    <input type="file" id="file" class="inputfile" />
+    <label for="file" class="input-plus">+</label>
+  </ul>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="./js/firebaseSet.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
+
