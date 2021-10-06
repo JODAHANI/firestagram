@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
 body{
     animation: fade-in 2s;
-}
-
-span.profile-name{
-    letter-spacing: 1px
+    font-family: 'Noto Sans KR', sans-serif;
 }
 .post-content{
     padding: 15px 15px; 
+    line-height: 1.2rem;
 }
 
 .edit-btn{
@@ -17,7 +17,7 @@ span.profile-name{
 
 .reply{
     border-top: 1px solid #eee;
-    margin-top: 2.7rem;
+    margin-top: 3rem;
 }
 .reply button{
     border: none;
@@ -34,17 +34,23 @@ span.profile-name{
     font-size: 0.8rem;
     display: inline-block;
 }
+
 .like{
-    padding: 0.5rem 1rem;
-    font-weight: 600;
+    padding: 0.5rem 0.7rem;
     
 }
 
-.fa{
+.dm{
+    cursor: pointer;
+}
+
+i{
     margin-right: 5px;
 }
 .comment {
     cursor: pointer;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .likes{
@@ -82,7 +88,7 @@ span.profile-name{
 }
 
 .post-img{
-    flex: 2;
+    flex: 2.5;
     box-sizing: border-box;
     border-right: 1px solid #eee;
 }
@@ -109,19 +115,6 @@ span.profile-name{
 .post-edit{
     cursor: pointer;
 }
-.post-header{
-    padding: 15px;
-    display: none;
-    border-bottom: 1px solid #eee;
-    justify-content: space-between;
-    cursor: pointer;
-}
-.post-header.on {
-    display: flex;
-}
-.post-box{
-    display: flex;
-}
 .profile {
     background-image: url("https://placeimg.com/100/100/arch");
     width: 30px;
@@ -131,11 +124,14 @@ span.profile-name{
 }
 
 .profile-name {
-    margin-left: 15px;
     margin-top: 6px;
     font-size: 0.900rem;
-    font-weight: 600;
+    font-weight: 700;
 }
+.profile-name.first{
+    margin-left: 0.8rem;
+}
+
 
 a {
     
@@ -200,20 +196,3 @@ header {
     }
 }
 
-@media screen and (max-width:1070px) {
-    .post {
-        display: block;
-    }
-    
-    .post-side{
-        display: none;
-    }
-}
-@media screen and (max-width:600px) {
-    .form-control {
-        display: none;
-    }
-    .navbar{
-        padding: 10px 10px;
-    }
-}

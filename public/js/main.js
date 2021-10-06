@@ -1,31 +1,26 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-let container = document.querySelector('.container');
-let inputfile = document.querySelector('.inputfile');
-let uploadPage = document.querySelector('.upload-page');
-let uploadImage1 = document.querySelector('.upload-image1');
-let uploadImage2 = document.querySelector('.upload-image2');
-let prevBtn = document.querySelector('.btn.prev')
-let nextBtn = document.querySelector('.btn.next');
-let box1 = document.querySelector('.box1')
-let box2 = document.querySelector('.box2')
-let writeBox = document.querySelector('.write-box');
+const input = document.querySelector('.inputfile');
+const uploadPage = document.querySelector('.upload-page');
+const uploadImage1 = document.querySelector('.upload-image1');
+const uploadImage2 = document.querySelector('.upload-image2');
+const prev = document.querySelector('.btn.prev'); 
+const next = document.querySelector('.btn.next');
+const box1 = document.querySelector('.box1');
+const box2 = document.querySelector('.box2');
+const writeBox = document.querySelector('.write-box');
 
-let image_Url;
-let pageNum = 0;
-
+let step = 0;
 
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        console.log(user);
         localStorage.setItem('user',JSON.stringify(user))
         로그인정보();        
     }
 
 });
-
 
 
 function 로그인정보(){
@@ -39,6 +34,7 @@ function 로그인정보(){
 
 function signOut() {
     firebase.auth().signOut()
+    alert('로그아웃 되었습니다.')
     localStorage.removeItem('user')
     $('.sign-out').removeClass('on');
     $('a.sign').css(`display`, `inline-block`)   
@@ -46,59 +42,16 @@ function signOut() {
 
 
 
-db.collection('post').get().then((result) => {
-    result.forEach(doc => {
-        let date = doc.data().date.toDate();
-        let year = date.getFullYear();
-        let month = date.getMonth()+1;
-        let day = date.getDate();
-        let hour = date.getHours();
-        let min = date.getMinutes();
-        let time = `${year}년 ${month}월 ${day}일 ${hour}:${min}`;
-        let template = `
-        <div class="post" style="border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
-          <div class="post-header">
-            <div class="post-box">
-                <div class="profile"></div>
-                <div class="profile-name">${doc.data().올린사람}</div>
-            </div>
-            <div class="detail-page"><a href="/detail.html?id=${doc.id}">...</a></div>
-          </div>
-          <div class="post-body" style="background-image: url(${doc.data().img})"></div>
-          <div class="post-content">
-            <div class="options">
-              <p class="likes"><i class="fa fa-heart-o" aria-hidden="true"></i>${doc.data().좋아요수} Likes</p>
-              <a href="/detail.html?id=${doc.id}"><p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>comment</p></a>
-            </div>
-            <p class="name"><strong>joda_hani</strong>${doc.data().content}</p>
-            <p class="date">${time}</p>
-          </div>
-        </div>
-        `
-        $('.container').append(template);
-    });
-});
 
 
 function btnControll(file) {
-    prevBtn.addEventListener('click', function() {
-        if(pageNum == 1) {
-            nextBtn.innerText = 'Next'
-            box1.style.display = "block"
-            box2.style.display = "none"
-            pageNum = 0;
-        } else if(pageNum == 0) {
-            uploadPage.classList.remove('on')
-        }
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        if(pageNum == 0) {
-            pageNum ++;
+    next.addEventListener('click', () => {
+        if(step == 0) {
+            step ++;
             box1.style.display = "none"
             box2.style.display = "block"
-            nextBtn.innerText = 'Sub'
-        } else if(pageNum == 1) {
+            next.innerText = 'Sub'
+        } else if(step == 1) {
             let storageRef = storage.ref();
             let 저장할경로 = storageRef.child('image/' + file.name);
             let uploadTask = 저장할경로.put(file);
@@ -110,8 +63,9 @@ function btnControll(file) {
                 () => {
                     uploadTask.snapshot.ref.getDownloadURL().then((url) => {
                         console.log('업로드된 경로는', url)
+                        let user = JSON.parse(localStorage.getItem('user'));
                         let saveData = {
-                            올린사람: 'joda_hani',
+                            올린사람: user.displayName,
                             좋아요수: 0,
                             content: writeBox.value,
                             date : new Date(),
@@ -121,10 +75,10 @@ function btnControll(file) {
 
                         db.collection('post').add(saveData).then((result) => {
                             uploadPage.classList.remove('on');
-                            nextBtn.innerText = 'Next'
+                            next.innerText = 'Next'
                             box1.style.display = "block"
                             box2.style.display = "none"
-                            pageNum = 0;
+                            step = 0;
                             window.location.reload();
                         })
                     })
@@ -132,24 +86,144 @@ function btnControll(file) {
             )
         }
     });
+
+    prev.addEventListener('click',()=> {
+        if(step == 1) {
+            next.innerText = 'Next'
+            box1.style.display = "block"
+            box2.style.display = "none"
+            step = 0;
+        } else if(step == 0) {
+            uploadPage.classList.remove('on')
+        }
+    })
+
 }
 
-
-
-
-
-inputfile.addEventListener('change',function(e) {
+input.addEventListener('change',function (e) {
     let file = e.target.files[0];
     image_Url = URL.createObjectURL(file)
 
-    btnControll(file)
 
-    uploadPage.classList.add('on')
-    uploadImage1.style.backgroundImage = `url('${image_Url}')`;
-    uploadImage2.style.backgroundImage = `url('${image_Url}')`;
+    uploadPage.classList.add('on');
+    uploadImage1.style.backgroundImage = `url(${image_Url})`
+    uploadImage2.style.backgroundImage = `url(${image_Url})`
+    btnControll(file);
+})
 
-});
 
+
+
+
+function init() {
+    let currentUser = JSON.parse(localStorage.getItem('user'));
+    let find = x => x.id == currentUser.uid;
+    if(currentUser == null) {
+        db.collection('post').get().then((result) => {
+                result.forEach((doc) => {
+                    let time = doc.data().date.toDate();
+                    let year = time.getFullYear();
+                    let month = time.getMonth()+1;
+                    let day = time.getDay();
+                    let hours = time.getHours();
+                    let min = time.getMinutes();
+                    time = `${year}년 ${month}월 ${day}일 ${hours}:${min}`
+        
+                    let template = `
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="profile-box">
+                                    <div class="profile"></div>
+                                    <div class="profile-name">${doc.data().올린사람}</div>
+                                </div>
+                                <div class="detail"><a href="/detail.html?id=${doc.id}">...</a></div>
+                            </div>
+                            <div class="post-body" id="${doc.id}"><img src="${doc.data().img}"></div>
+                            <div class="post-content">
+                                <div class="options">
+                                    <p class="likes"><i class="fa fa-heart-o" aria-hidden="true"></i>${doc.data().좋아요수}Likes</p>
+                                    <a href="detail.html?id=${doc.id}"><p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>comment</p></a>
+                                </div>
+                                <p class="name"><strong>${doc.data().올린사람}</strong>${doc.data().content}</p>
+                                <p class="date">${time}</p>
+                            </div>           
+                        </div> 
+                    `
+                    $('.container').append(template);
+                })
+            })
+    } else {
+        db.collection('post').get().then((result) => {
+            result.forEach((doc) => {
+                let 좋아요눌린사람 = doc.data().좋아요눌린사람;
+                let check = 좋아요눌린사람.findIndex(find)
+                if(check == -1) {
+                    let time = doc.data().date.toDate();
+                    let year = time.getFullYear();
+                    let month = time.getMonth()+1;
+                    let day = time.getDay();
+                    let hours = time.getHours();
+                    let min = time.getMinutes();
+                    time = `${year}년 ${month}월 ${day}일 ${hours}:${min}`
+        
+                    let template = `
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="profile-box">
+                                    <div class="profile"></div>
+                                    <div class="profile-name">${doc.data().올린사람}</div>
+                                </div>
+                                <div class="detail"><a href="/detail.html?id=${doc.id}">...</a></div>
+                            </div>
+                            <div class="post-body" id="${doc.id}"><img src="${doc.data().img}"></div>
+                            <div class="post-content">
+                                <div class="options">
+                                    <p class="likes"><i class="fa fa-heart-o" aria-hidden="true"></i>${doc.data().좋아요수}Likes</p>
+                                    <a href="detail.html?id=${doc.id}"><p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>comment</p></a>
+                                </div>
+                                <p class="name"><strong>${doc.data().올린사람}</strong>${doc.data().content}</p>
+                                <p class="date">${time}</p>
+                            </div>           
+                        </div> 
+                    `
+                    $('.container').append(template);
+                } else {
+                    let time = doc.data().date.toDate();
+                    let year = time.getFullYear();
+                    let month = time.getMonth()+1;
+                    let day = time.getDay();
+                    let hours = time.getHours();
+                    let min = time.getMinutes();
+                    time = `${year}년 ${month}월 ${day}일 ${hours}:${min}`
+        
+                    let template = `
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="profile-box">
+                                    <div class="profile"></div>
+                                    <div class="profile-name">${doc.data().올린사람}</div>
+                                </div>
+                                <div class="detail"><a href="/detail.html?id=${doc.id}">...</a></div>
+                            </div>
+                            <div class="post-body" id="${doc.id}"><img src="${doc.data().img}"></div>
+                            <div class="post-content">
+                                <div class="options">
+                                    <p class="likes"><i class="fa fa-heart" aria-hidden="true"></i>${doc.data().좋아요수}Likes</p>
+                                    <a href="detail.html?id=${doc.id}"><p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>comment</p></a>
+                                </div>
+                                <p class="name"><strong>${doc.data().올린사람}</strong>${doc.data().content}</p>
+                                <p class="date">${time}</p>
+                            </div>           
+                        </div> 
+                    `
+                    $('.container').append(template);
+                }
+            })
+        })
+    }
+}
+
+init();
 
 
 
