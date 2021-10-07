@@ -4,6 +4,15 @@ body{
     animation: fade-in 2s;
     font-family: 'Noto Sans KR', sans-serif;
 }
+.post-comments{
+    margin-top: 2rem;
+}
+.post-reply{
+    padding: 5px 15px;
+    line-height: 1.5rem;
+    cursor: pointer;
+}
+
 .post-content{
     padding: 15px 15px; 
     line-height: 1.2rem;

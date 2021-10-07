@@ -8,10 +8,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="./css/reset.css">
 <link rel="stylesheet" href="./css/detail.css">
+<link rel="stylesheet" href="./css/replyEdit.css">
 <title>Document</title>
 </head>
 
 <body>
+  <div class="upload-page">
+    <div class="white-bg">
+      <button class="btn prev">Del</button>
+      <button class="btn next">Sub</button>
+      <div class="box">
+        <div class="write">
+          <textarea class="write-box" placeholder="wirte!"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
 <header>
   <nav class="navbar">
     <a class="navbar-brand" href="/">Firestagram</a>
@@ -45,7 +57,8 @@
           <div class="post-edit"><button class="edit-btn" onclick="editPage()">...</button></div>
           </div>
           <div class="comments">
-            <p class="post-content"></p>
+            <div class="post-content"></div>
+            <div class="post-comments"></div>
           </div>
           <div class="side-footer">
             <div class="options">

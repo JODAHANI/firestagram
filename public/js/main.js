@@ -69,8 +69,9 @@ function btnControll(file) {
                             좋아요수: 0,
                             content: writeBox.value,
                             date : new Date(),
-                            img : url
-                
+                            img : url,
+                            댓글: [],
+                            좋아요눌린사람 :[]
                         }
 
                         db.collection('post').add(saveData).then((result) => {
