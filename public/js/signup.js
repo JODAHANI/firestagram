@@ -1,6 +1,3 @@
-const db = firebase.firestore();
-const storage = firebase.storage();
-
 const main = document.querySelector('.main');
 const signIn = document.querySelector('.btn-sign-in')
 const signUp = document.querySelector('.btn-sign-up')

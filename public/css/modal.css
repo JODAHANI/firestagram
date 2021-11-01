@@ -1,6 +1,21 @@
-.btn{ background: #fff; border: none; font-size: 1.1rem; cursor: pointer; margin-top: 10px;}
-.btn.prev{margin-left: 10px; margin-right: 326px; color: lightgray;}
-.btn.next{ margin-right: 7px;}
+.modal-btn{
+    display: flex;
+    justify-content: space-between;
+}
+.btn{ 
+    background: #fff; 
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 10px 5px;
+    }
+.btn.prev{
+    padding-left: 15px;
+    color: lightgray;
+}
+.btn.next{
+    padding-right: 15px;
+}
 
 textarea{
    resize: none;
@@ -52,10 +67,11 @@ textarea{
 }
 .filters {
     overflow-x: scroll;
-   overflow-y: hidden;
+    overflow-y: hidden;
     white-space: nowrap;
+    cursor: pointer;
 }
-.filter-1 {
+.filter {
     width: 100px;
     height: 100px;
     background-color: cornflowerblue;
@@ -82,10 +98,8 @@ textarea{
 
 .box1{
     display: block;
-    margin-top: 10px;
 }
 
 .box2{
     display: none;
-    margin-top: 10px;
 }

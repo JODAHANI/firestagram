@@ -4,6 +4,10 @@ body{
 	animation: fade-in 1s;
 	font-family: 'Noto Sans KR', sans-serif;
 }
+button{
+	line-height: 1rem;
+	padding: 0;
+}
 a{
 	text-decoration: none;
 	color: black;
@@ -17,7 +21,9 @@ a{
     border: none;
     background-color: #fff;
     color: black;
-
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 1rem;
+	vertical-align: top;
 }
 .sign-out.on:hover{
     color: #777;
@@ -45,13 +51,14 @@ header{
 
 .navbar-brand{
 	margin-right: 5rem;
+	font-weight: 600;
 }
 .navbar-nav{
 	display: flex;
 }
 
 .nav-item{
-	margin-right: 10px
+	margin-right: 10px;
 }
 
 .nav-link:hover{

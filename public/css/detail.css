@@ -4,13 +4,18 @@ body{
     animation: fade-in 2s;
     font-family: 'Noto Sans KR', sans-serif;
 }
+button{
+	line-height: 1rem;
+	padding: 0;
+}
 .post-comments{
     margin-top: 2rem;
 }
 .post-reply{
-    padding: 5px 15px;
+    padding: 2px 15px;
     line-height: 1.5rem;
     cursor: pointer;
+    margin-top: -0.7rem;
 }
 
 .post-content{
@@ -26,7 +31,7 @@ body{
 
 .reply{
     border-top: 1px solid #eee;
-    margin-top: 3rem;
+    margin-top: 1.7rem;
 }
 .reply button{
     border: none;
@@ -46,6 +51,7 @@ body{
 
 .like{
     padding: 0.5rem 0.7rem;
+    cursor: pointer;
     
 }
 
@@ -132,14 +138,6 @@ i{
     border-radius: 50%;
 }
 
-.profile-name {
-    margin-top: 6px;
-    font-size: 0.900rem;
-    font-weight: 700;
-}
-.profile-name.first{
-    margin-left: 0.8rem;
-}
 
 
 a {
@@ -193,15 +191,162 @@ header {
 
 }
 
+.likeBox{
+    cursor: pointer
+}
 
+.like-page{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: -3100px;
+    background: rgba(0, 0,0,0.5);
+    z-index: 1;
+    transition: all 0.3s;
+}
+.like-page.on{
+    top: 0px;
+}
+
+.white-bg2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 450px;
+    height: 650px;
+    background-color: #fff;
+    border-radius: 1%;
+}
+.close-box{
+    display: flex;
+    justify-content: space-between;
+}
+.white-bg2 button {
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 1rem;
+}
+.spacing{
+    width: 2rem;
+    padding: 1rem
+}
+.like-text{
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: 500;
+}
+.profile{
+	background-image: url("https://placeimg.com/100/100/arch");
+	width: 50px;
+	height: 50px;
+	background-size: 100%;
+	border-radius: 50%;
+}
+.profile-name-like{
+    margin-left: 1rem;
+    line-height: 2.5rem;
+}
+.profile-name {
+    margin-top: 6px;
+    font-size: 0.900rem;
+    font-weight: 700;
+}
+.profile-name.first{
+    margin-left: 0.8rem;
+}
+.profile-name{
+    line-height: 40px;
+	font-weight: 600;
+	margin-top: 6px;
+}
+.profile-box{
+	display: flex;
+    padding: 0.5rem 1rem;
+}
+.push{
+    font-size: 50px;
+}
+
+.sign-out {
+    display: none;
+}
+.sign-out.on {
+    display: inline-block;
+    border: none;
+    background-color: #fff;
+    color: black;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 1rem;
+	vertical-align: top;
+}
+.sign-out.on:hover{
+    color: #777;
+}
+
+.post-head {
+    display: none;
+}
+.post-footer {
+    display: none;
+}
 @keyframes fade-in {
     0% {opacity: 0;}
     100% {opacity: 1;}
 }
 
-@media screen and (max-width:760px) {
+@media (max-width: 1060px) {
+    
+    .post-footer{
+        display: block;
+    }
+    .post-side{ 
+        display : none
+    }
+    .post-img {
+        display: block;
+    }
+    .post {
+        max-width: 620px;
+        display: block;
+        max-height: 100%;
+        border-bottom: none;
+    }
+    .post-head {
+        display: block;
+    }
     .side-header{
-        padding: 15px 10px;
+        padding: 1rem 0.7rem;
+        align-items: center;
+    }
+    .comments{
+        height: 100%;
+    }
+    .post-comments {
+        margin-top: 0
+    }
+    .side-footer{
+        margin-bottom: 10rem;
+    }
+    .reply{
+        border-bottom: 1px solid #eee;
+    }
+    .reply input {
+        width: 90%;
     }
 }
+@media (max-width:600px) {
+    .form-control {
+        display: none;
+    }
+    .navbar{
+        padding: 10px 10px;
+    }
+}
+
+
+
+
 

@@ -28,14 +28,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/message.html">Message</a>
                 </li>
+                <li class="nav-item">
+                    <button class="sign-out" onclick="signOut()">Sign Out</button>
+                    <a class="sign nav-link" href="/signin.html">Sign In</a>
+                </li>
             </ul>
         </nav>
     </header>
     <div class="container">
         <div class="upload-page">
             <div class="white-bg">
-                <button class="btn del">Delete</button>
-                <button class="btn edit">Edit</button>
+                <div class="modal-btn">
+                    <button class="btn del">Delete</button>
+                    <button class="btn edit">Edit</button>
+                  </div>
                 <div class="upload-image"></div>
                 <div class="write">
                     <textarea class="write-box" placeholder="wirte!"></textarea>
@@ -51,6 +57,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./js/firebaseSet.js"></script>
+    <script src="./js/loginCheck.js"></script>
     <script src="./js/edit.js"></script>
 </body>
 

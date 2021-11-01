@@ -1,6 +1,22 @@
-.btn{ background: #fff; border: none; font-size: 1.1rem; cursor: pointer; margin-top: 10px;}
-.btn.del{margin-left: 10px; margin-right: 315px; color: black;}
-.btn.edit{ margin-right: 7px;}
+.modal-btn{
+    display: flex;
+    justify-content: space-between;
+}
+.btn{ 
+    background: #fff; 
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 10px 5px;
+    }
+.btn.del{
+    padding-left: 15px;
+    color: lightgray;
+}
+.btn.edit{
+    padding-right: 15px;
+}
+
 
 .write-box {
 	border: none;

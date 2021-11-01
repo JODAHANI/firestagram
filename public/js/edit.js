@@ -1,6 +1,3 @@
-const db = firebase.firestore();
-const storage = firebase.storage();
-
 const writeBox = document.querySelector('.write-box');
 const img = document.querySelector('.upload-image');
 const delBtn = document.querySelector('.del');

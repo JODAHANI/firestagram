@@ -6,27 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cssgram/0.1.12/cssgram.min.css" integrity="sha512-kr3JaEexN5V5Br47Lbg4B548Db46ulHRGGwvyZMVjnghW1BKmqIjgEgVHV8D7V+Cbqm/VBgo3Rcbtv+mGLoWXA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/modal.css">
-
-  <title>Document</title>
+  <title>Firestagram</title>
 </head>
 
 <body>
   <div class="upload-page">
     <div class="white-bg">
-      <button class="btn prev">Prev</button>
-      <button class="btn next">Next</button>
+      <div class="modal-btn">
+        <button class="btn prev">Prev</button>
+        <button class="btn next">Next</button>
+      </div>
         <div class="box1">
           <div class="upload-image1"></div>
-          <div class="filters">
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
-            <div class="filter-1"></div>
-          </div>
+          <div class="filters"></div>
         </div>
       <div class="box2">
         <div class="upload-image2"></div>
@@ -40,7 +36,7 @@
     <nav class="navbar">
       <a class="navbar-brand" href="/">Firestagram</a>
       <div class="search">
-        <form class="d-flex">
+        <form class="form">
           <input class="form-control" placeholder="검색">
         </form>
       </div>
@@ -74,7 +70,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="./js/firebaseSet.js"></script>
+  <script src="./js/loginCheck.js"></script>
   <script src="./js/main.js"></script>
+  <script src="./js/search.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="./css/message.css">
 
   <title>Document</title>
 </head>
@@ -29,11 +30,27 @@
         <li class="nav-item">
           <a class="nav-link" href="/message.html">Message</a>
         </li>
+        <li class="nav-item">
+          <button class="sign-out" onclick="signOut()">Sign Out</button>
+          <a class="sign nav-link" href="/signin.html">Sign In</a>
+        </li>
       </ul>
     </nav>
   </header>
-  <div class="container">
-    
+  <div class="wrap">
+      <div class="list-box">
+        <ul class="list-group chat-list"></ul>
+      </div>
+      <div class="chat">
+        <div class="chat-room">
+          <ul class="list-group chat-content">
+          </ul>
+          <div class="input-group">
+            <input class="chat-input" id="chat-input">
+            <button class="chat-btn" id="send">전송</button>
+          </div>
+        </div>
+    </div>
 
   </div>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
@@ -42,7 +59,8 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="./js/firebaseSet.js"></script>
-  <script src="./js/main.js"></script>
+  <script src="./js/loginCheck.js"></script>
+  <script src="./js/message.js"></script>
 </body>
 
 </html>
