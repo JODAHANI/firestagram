@@ -1,14 +1,15 @@
 const dm = document.querySelector('.dm')
-const likes = document.querySelectorAll('.likes');
-const replyBtn = document.querySelectorAll('.reply-btn');
+const likes = document.querySelector('.likes');
+const replyBtn = document.querySelector('.reply-btn');
 const input = document.querySelector('.reply input')
 const uploadPage = document.querySelector('.upload-page');
 const next = document.querySelector('.btn.next');
 const prev = document.querySelector('.btn.prev');
 const writeBox = document.querySelector('.write-box');
-const likeNums = document.querySelectorAll('.like .num')
-const likeBox = document.querySelectorAll('.like')
+const likeNums = document.querySelector('.like .num')
+const likeBox = document.querySelector('.like')
 const closeBtn = document.querySelector('.close-btn');
+const comment = document.querySelector('.comment')
 
 let currentUser = JSON.parse(localStorage.getItem('user'));
 
@@ -66,9 +67,8 @@ function likeCheck(likePushUser) {
     let find = x => x.id == currentUser.uid;
     let check = likePushUser.findIndex(find);
     if (!(check == -1)) {
-        let heart = document.querySelectorAll('.fa-heart-o')
-        heart[0].className = 'fa fa-heart'
-        heart[1].className = 'fa fa-heart'
+        let heart = document.querySelector('.fa-heart-o')
+        heart.className = 'fa fa-heart'
     }
 }
 function init() {
@@ -76,18 +76,13 @@ function init() {
         postUploadUserName = result.data().올린사람;
         postUploadUserId = result.data().올린사람id;
         document.querySelector('.post-img').innerHTML = `<img class="${result.data().필터}" src="${result.data().img}">`
-        let profile_Name = document.querySelectorAll('.profile-name');
-        for (let i = 0; i < profile_Name.length; i++) {
-            let item = profile_Name.item(i);
-            item.innerHTML = `${result.data().올린사람}`;
-        }
-        let postContent = document.querySelectorAll('.post-content')
-        let likeNum = document.querySelectorAll('.like .num')
+        let profile_Name = document.querySelector('.profile-name');
+        profile_Name.innerHTML = postUploadUserName
+        let postContent = document.querySelector('.post-content')
+        let likeNum = document.querySelector('.like .num')
 
-        postContent[0].innerHTML = `<span class="profile-name">${result.data().올린사람}:</span> ${result.data().content}`
-        postContent[1].innerHTML = `<span class="profile-name">${result.data().올린사람}:</span> ${result.data().content}`
-        likeNum[0].innerText = `${result.data().좋아요수}`
-        likeNum[1].innerText = `${result.data().좋아요수}`
+        postContent.innerHTML = `<span class="profile-name">${result.data().올린사람}:</span> ${result.data().content}`
+        likeNum.innerText = `${result.data().좋아요수}`
 
         let likePushUser = result.data().좋아요눌린사람
         likeCheck(likePushUser)
@@ -101,13 +96,11 @@ function init() {
 
     });
 
-    likeBox[0].addEventListener('dblclick', 좋아요누른사람보기)
-    likeBox[1].addEventListener('dblclick', 좋아요누른사람보기)
+    likeBox.addEventListener('dblclick', 좋아요누른사람보기)
     closeBtn.addEventListener('click', () => {
         $('.like-page').removeClass('on')
     });
-    replyBtn[0].addEventListener('click', reply)
-    replyBtn[1].addEventListener('click', reply)
+    replyBtn.addEventListener('click', reply)
 
     // 채팅창
     dm.addEventListener('click', () => {
@@ -130,14 +123,20 @@ function init() {
             // });
         // })
     })
+
+    // 댓글focus
+    comment.addEventListener('click',hover)
+}
+function hover() {
+    document.querySelector('.reply-input').focus()
 }
 
 function editPage() {
     window.location.href = `/edit.html?id=${params.get('id')}`
 }
 
-likes[0].addEventListener('dblclick',불러오기);
-likes[1].addEventListener('dblclick',불러오기);
+likes.addEventListener('dblclick',불러오기);
+
 
 function 불러오기 () {
     db.collection('post').doc(params.get('id')).get().then((result) => {
@@ -152,11 +151,9 @@ function 불러오기 () {
                 좋아요수: result.data().좋아요수 + 1
             }
             db.collection('post').doc(params.get('id')).update(edit).then(() => {
-                likeNums[0].innerText = `${result.data().좋아요수 + 1}`
-                likeNums[1].innerText = `${result.data().좋아요수 + 1}`
-                let heart = document.querySelectorAll('.fa-heart-o')
-                heart[0].className = 'fa fa-heart'
-                heart[1].className = 'fa fa-heart'
+                likeNums.innerText = `${result.data().좋아요수 + 1}`
+                let heart = document.querySelector('.fa-heart-o')
+                heart.className = 'fa fa-heart'
                 alert('좋아요를 눌렀습니다.')
             })
         } else {
@@ -167,12 +164,10 @@ function 불러오기 () {
                 좋아요수: result.data().좋아요수 - 1
             }
             db.collection('post').doc(params.get('id')).update(edit).then(() => {
-                likeNums[0].innerText = `${result.data().좋아요수 - 1}`
-                likeNums[1].innerText = `${result.data().좋아요수 - 1}`
-                let heart = document.querySelectorAll('.fa-heart')
-                heart[0].className = 'fa fa-heart-o'
-                heart[1].className = 'fa fa-heart-o'
-                alert('피드를 좋아하지 않습니다.')
+                likeNums.innerText = `${result.data().좋아요수 - 1}`
+                let heart = document.querySelector('.fa-heart')
+                heart.className = 'fa fa-heart-o'
+                alert('좋아요 누르기 취소.')
             });
         }
 

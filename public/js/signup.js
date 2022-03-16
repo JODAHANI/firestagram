@@ -1,7 +1,6 @@
 const main = document.querySelector('.main');
 const signIn = document.querySelector('.btn-sign-in')
 const signUp = document.querySelector('.btn-sign-up')
-const email = document.querySelector('.email');
 
 
 function init() {
@@ -13,7 +12,7 @@ function init() {
         const email = document.querySelector('#email').value;
         const pw = document.querySelector('#pw').value;
         const name = document.querySelector('#name').value;
-
+        
         firebase.auth().createUserWithEmailAndPassword(email, pw)
         .then((reuslt) => {
             reuslt.user.updateProfile({displayName : name})
@@ -22,7 +21,9 @@ function init() {
             document.querySelector('#pw').value = '';
             document.querySelector('#name').value = '';
             alert('로그인 부탁드립니다!')
-        }); 
+        }).catch((error)=>{
+            alert(error.message)
+        })
     })    
     
     signIn.addEventListener('click',function() {

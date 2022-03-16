@@ -2,15 +2,17 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cssgram/0.1.12/cssgram.min.css" integrity="sha512-kr3JaEexN5V5Br47Lbg4B548Db46ulHRGGwvyZMVjnghW1BKmqIjgEgVHV8D7V+Cbqm/VBgo3Rcbtv+mGLoWXA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/detail.css">
-<link rel="stylesheet" href="./css/replyEdit.css">
-<title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cssgram/0.1.12/cssgram.min.css"
+    integrity="sha512-kr3JaEexN5V5Br47Lbg4B548Db46ulHRGGwvyZMVjnghW1BKmqIjgEgVHV8D7V+Cbqm/VBgo3Rcbtv+mGLoWXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/detail.css">
+  <link rel="stylesheet" href="./css/replyEdit.css">
+  <title>Document</title>
 </head>
 
 <body>
@@ -37,97 +39,70 @@
       </div>
     </div>
   </div>
-<header>
-  <nav class="navbar">
-    <a class="navbar-brand" href="/">Firestagram</a>
-    <div class="search">
-      <form class="d-flex">
-        <input class="form-control" placeholder="검색">
-      </form>
-    </div>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/message.html">Message</a>
-      </li>
-      <li class="nav-item">
-        <button class="sign-out" onclick="signOut()">Sign Out</button>
-        <a class="sign nav-link" href="/signin.html">Sign In</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-<div class="container">
-    <div class="post" >
-        <div class="post-head">
-          <div class="side-header">
-            <div class="post-box">
-              <div class="profile"></div>
-              <div class="profile-name first"></div>
+  <header>
+    <nav class="navbar">
+      <a class="navbar-brand" href="/">Firestagram</a>
+      <div class="search">
+        <form class="d-flex">
+          <input class="form-control" placeholder="검색">
+        </form>
+      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/message.html">Message</a>
+        </li>
+        <li class="nav-item">
+          <button class="sign-out" onclick="signOut()">Sign Out</button>
+          <a class="sign nav-link" href="/signin.html">Sign In</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="post">
+      <div class="post-img"></div>
+      <div class="post-side">
+        <div class="side-header">
+          <div class="post-box">
+            <div class="profile"></div>
+            <div class="profile-name first"></div>
           </div>
           <div class="post-edit"><button class="edit-btn" onclick="editPage()">...</button></div>
+        </div>
+        <div class="comments">
+          <div class="post-content"></div>
+          <div class="post-comments"></div>
+        </div>
+        <div class="side-footer">
+          <div class="options">
+            <p class="likes"><i class="fa fa-heart-o" aria-hidden="true"></i>Likes</p>
+            <p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>Comment</p>
+            <p class="dm"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Message</p>
+          </div>
+          <div class="like"><span class="num"></span>명이 사진을 좋아합니다.</div>
+          <div class="reply">
+            <input class="reply-input" type="text" placeholder="댓글을 입력해주세요!">
+            <button class="reply-btn">add</button>
           </div>
         </div>
-        <div class="post-img"></div>
-        <div class="post-footer">
-          <div class="comments">
-            <div class="post-content"></div>
-            <div class="post-comments"></div>
-          </div>
-          <div class="side-footer">
-            <div class="options">
-                <p class="likes"><i class="fa fa-heart-o" aria-hidden="true"></i>Likes</p>
-                <p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>Comment</p>
-                <p class="dm"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Message</p>
-              <!-- <p class="date"></p> -->
-            </div>
-            <div class="like"><span class="num"></span>명이 사진을 좋아합니다.</div>
-            <div class="reply">
-              <input type="text" placeholder="댓글을 입력해주세요!">
-              <button class="reply-btn">add</button>
-            </div>
-          </div>
-        </div>
-        <div class="post-side">
-          <div class="side-header">
-            <div class="post-box">
-              <div class="profile"></div>
-              <div class="profile-name first"></div>
-          </div>
-          <div class="post-edit"><button class="edit-btn" onclick="editPage()">...</button></div>
-          </div>
-          <div class="comments">
-            <div class="post-content"></div>
-            <div class="post-comments"></div>
-          </div>
-          <div class="side-footer">
-            <div class="options">
-                <p class="likes"><i class="fa fa-heart-o" aria-hidden="true"></i>Likes</p>
-                <p class="comment"><i class="fa fa-comment-o" aria-hidden="true"></i>Comment</p>
-                <p class="dm"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>Message</p>
-              <!-- <p class="date"></p> -->
-            </div>
-            <div class="like"><span class="num"></span>명이 사진을 좋아합니다.</div>
-            <div class="reply">
-              <input type="text" placeholder="댓글을 입력해주세요!">
-              <button class="reply-btn">add</button>
-            </div>
-          </div>
-        </div>
-        
-    </div>
-</div> 
+      </div>
 
-</div>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="./js/firebaseSet.js"></script>
-<script src="./js/loginCheck.js"></script>
-<script src="./js/detail.js"></script>
+    </div>
+  </div>
+
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="./js/firebaseSet.js"></script>
+  <script src="./js/loginCheck.js"></script>
+  <script src="./js/detail.js"></script>
 </body>
+
 </html>
